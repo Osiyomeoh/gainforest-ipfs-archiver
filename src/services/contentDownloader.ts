@@ -22,7 +22,7 @@ export class ContentDownloader {
 
   /**
    * Ensure download directory exists
-   * Defense: Creates necessary directories for file operations
+
    */
   private async ensureDownloadDirectory(): Promise<void> {
     try {
@@ -44,7 +44,7 @@ export class ContentDownloader {
 
   /**
    * Download content from URL
-   * Defense: Comprehensive download with validation and streaming
+
    */
   async downloadContent(url: string): Promise<DownloadResult> {
     try {
@@ -112,7 +112,7 @@ export class ContentDownloader {
 
   /**
    * Stream download with size limits
-   * Defense: Prevents memory exhaustion with large files
+
    */
   private async streamDownload(
     response: any,
@@ -177,7 +177,7 @@ export class ContentDownloader {
 
   /**
    * Validate URL before download
-   * Defense: Prevents downloading from malicious or invalid URLs
+
    */
   private validateUrl(url: string): void {
     try {
@@ -235,7 +235,7 @@ export class ContentDownloader {
 
   /**
    * Validate HTTP response
-   * Defense: Ensures response is suitable for archiving
+
    */
   private validateResponse(response: any, url: string): void {
     const contentLength = response.headers['content-length'];
@@ -263,7 +263,7 @@ export class ContentDownloader {
 
   /**
    * Generate content metadata
-   * Defense: Comprehensive metadata for tracking and verification
+
    */
   private generateMetadata(
     url: string,
@@ -299,7 +299,7 @@ export class ContentDownloader {
 
   /**
    * Download multiple URLs concurrently
-   * Defense: Efficient batch processing with error isolation
+
    */
   async downloadBatch(urls: string[]): Promise<(DownloadResult | Error)[]> {
     const maxConcurrent = parseInt(process.env.MAX_CONCURRENT_DOWNLOADS || '5');
@@ -348,7 +348,7 @@ export class ContentDownloader {
 
   /**
    * Cleanup temporary files
-   * Defense: Prevents disk space issues
+
    */
   async cleanup(): Promise<void> {
     try {

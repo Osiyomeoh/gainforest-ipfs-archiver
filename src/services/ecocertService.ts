@@ -20,7 +20,7 @@ export class EcocertService {
 
   /**
    * Initialize all services
-   * Defense: Ensures all dependencies are ready before processing
+
    */
   async initialize(): Promise<void> {
     logger.info('Initializing EcocertService');
@@ -37,7 +37,7 @@ export class EcocertService {
 
   /**
    * Parse ecocert ID into components
-   * Defense: Validates format and extracts components safely
+
    */
   parseEcocertId(ecocertId: string): EcocertId {
     const parts = ecocertId.split('-');
@@ -67,7 +67,7 @@ export class EcocertService {
 
   /**
    * Get all sample ecocert IDs
-   * Defense: Returns immutable copy to prevent external modification
+
    */
   getSampleEcocertIds(): readonly string[] {
     return Object.freeze([...SAMPLE_ECOCERT_IDS]);
@@ -75,7 +75,7 @@ export class EcocertService {
 
   /**
    * Fetch attestations for an ecocert (using mock data)
-   * Defense: Simulates API with realistic delay and error handling
+
    */
   async fetchAttestations(ecocertId: string): Promise<readonly EcocertAttestation[]> {
     try {
@@ -100,7 +100,7 @@ export class EcocertService {
 
   /**
    * Extract all external URLs from attestations
-   * Defense: Validates and deduplicates URLs
+
    */
   extractExternalUrls(attestations: readonly EcocertAttestation[]): readonly string[] {
     const urls = new Set<string>();
@@ -124,8 +124,7 @@ export class EcocertService {
   }
 
   /**
-   * Process complete ecocert archiving pipeline
-   * Defense: Comprehensive processing with detailed error handling and progress tracking
+   * Process ecocert archiving
    */
   async processEcocert(ecocertId: string): Promise<EcocertProcessingResult> {
     const startTime = Date.now();
@@ -257,8 +256,7 @@ export class EcocertService {
   }
 
   /**
-   * Process individual URL - download and upload to IPFS
-   * Defense: Complete error handling with database tracking
+   * Process URL archiving
    */
   private async processUrl(ecocertId: string, attestationUid: string, url: string): Promise<void> {
     logger.info('Processing URL', { ecocertId, url });
@@ -337,8 +335,7 @@ export class EcocertService {
   }
 
   /**
-   * Generate appropriate filename for IPFS
-   * Defense: Creates meaningful, safe filenames
+   * Generate filename for IPFS
    */
   private generateFilename(url: string, contentType: string): string {
     try {
@@ -378,7 +375,7 @@ export class EcocertService {
 
   /**
    * Get file extension from content type
-   * Defense: Maps content types to appropriate extensions
+
    */
   private getExtensionFromContentType(contentType: string): string {
     const typeMap: Record<string, string> = {
@@ -399,7 +396,7 @@ export class EcocertService {
 
   /**
    * Validate URL format
-   * Defense: Basic URL validation before processing
+
    */
   private isValidUrl(url: string): boolean {
     try {
@@ -412,7 +409,7 @@ export class EcocertService {
 
   /**
    * Process batch of ecocerts
-   * Defense: Efficient batch processing with controlled concurrency
+
    */
   async processBatch(ecocertIds: string[]): Promise<EcocertProcessingResult[]> {
     const maxConcurrent = parseInt(process.env.MAX_CONCURRENT_ECOCERTS || '2');

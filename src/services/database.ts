@@ -26,7 +26,7 @@ export class DatabaseService {
 
   /**
    * Singleton pattern for connection management
-   * Defense: Ensures single connection pool across application
+
    */
   public static getInstance(): DatabaseService {
     if (!DatabaseService.instance) {
@@ -37,7 +37,7 @@ export class DatabaseService {
 
   /**
    * Setup database connection event handlers
-   * Defense: Production monitoring and debugging capabilities
+
    */
   private setupConnectionHandlers(): void {
     this.db.on('query', (query) => {
@@ -69,7 +69,7 @@ export class DatabaseService {
 
   /**
    * Initialize database connection and run migrations
-   * Defense: Validates database state before operations
+
    */
   async initialize(): Promise<void> {
     try {
@@ -103,7 +103,7 @@ export class DatabaseService {
 
   /**
    * Gracefully close database connection
-   * Defense: Proper resource cleanup for production deployments
+
    */
   async destroy(): Promise<void> {
     try {
@@ -122,7 +122,7 @@ export class DatabaseService {
 
   /**
    * Health check for monitoring systems
-   * Defense: Essential for production monitoring and alerting
+
    */
   async healthCheck(): Promise<{ status: string; connection: boolean; latency?: number }> {
     try {
@@ -146,7 +146,7 @@ export class DatabaseService {
 
   /**
    * Insert single ecocert with conflict handling
-   * Defense: Handles duplicate inserts gracefully
+
    */
   async insertEcocert(ecocert: EcocertInsert): Promise<void> {
     this.ensureInitialized();
@@ -176,7 +176,7 @@ export class DatabaseService {
 
   /**
    * Batch insert ecocerts for performance
-   * Defense: Efficient bulk operations with transaction safety
+
    */
   async insertEcocertsBatch(ecocerts: EcocertInsert[]): Promise<void> {
     this.ensureInitialized();
@@ -218,7 +218,7 @@ export class DatabaseService {
 
   /**
    * Get unprocessed ecocerts with limit
-   * Defense: Prevents memory issues with large datasets
+
    */
   async getUnprocessedEcocerts(limit: number = 100): Promise<readonly EcocertEntity[]> {
     this.ensureInitialized();
@@ -249,7 +249,7 @@ export class DatabaseService {
 
   /**
    * Mark ecocert as processed
-   * Defense: Atomic update with verification
+
    */
   async markEcocertProcessed(ecocertId: string): Promise<void> {
     this.ensureInitialized();
@@ -285,7 +285,7 @@ export class DatabaseService {
 
   /**
    * Insert attestation with validation
-   * Defense: Validates foreign key relationship exists
+
    */
   async insertAttestation(attestation: AttestationInsert): Promise<void> {
     this.ensureInitialized();
@@ -340,7 +340,7 @@ export class DatabaseService {
 
   /**
    * Insert archived content record
-   * Defense: Returns generated ID for tracking
+
    */
   async insertArchivedContent(content: ArchivedContentInsert): Promise<number> {
     this.ensureInitialized();
@@ -393,7 +393,7 @@ export class DatabaseService {
 
   /**
    * Update archive status with error handling
-   * Defense: Tracks retry attempts and error messages
+
    */
   async updateArchiveStatus(
     id: number, 
@@ -452,7 +452,7 @@ export class DatabaseService {
 
   /**
    * Get failed archives for retry processing
-   * Defense: Limits retry attempts and respects retry delays
+
    */
   async getFailedArchives(limit: number = 50): Promise<readonly ArchivedContentEntity[]> {
     this.ensureInitialized();
@@ -494,8 +494,7 @@ export class DatabaseService {
   }
 
   /**
-   * Get comprehensive archiving statistics
-   * Defense: Provides production monitoring metrics
+   * Get archiving statistics
    */
   async getArchivingStats(): Promise<ArchivingStats> {
     this.ensureInitialized();
@@ -575,7 +574,7 @@ export class DatabaseService {
 
   /**
    * Ensure database is initialized before operations
-   * Defense: Prevents operations on uninitialized connection
+
    */
   private ensureInitialized(): void {
     if (!this.isInitialized) {
@@ -588,7 +587,7 @@ export class DatabaseService {
 
   /**
    * Execute raw SQL with logging
-   * Defense: Controlled raw SQL access with monitoring
+
    */
   async executeRaw<T = any>(sql: string, bindings?: any[]): Promise<T> {
     this.ensureInitialized();

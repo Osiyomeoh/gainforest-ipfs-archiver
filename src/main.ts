@@ -6,7 +6,7 @@ import { logger } from './utils/logger';
 
 /**
  * Main entry point for the application
- * Defense: Centralized startup with comprehensive error handling
+
  */
 async function main(): Promise<void> {
   try {

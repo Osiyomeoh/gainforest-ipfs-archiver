@@ -2,8 +2,7 @@ import { EcocertId, ContentSource, EcocertAttestation } from './ecocert';
 import { ArchiveStatus } from './database';
 
 /**
- * Runtime type validation helpers
- * Ensures data matches TypeScript interfaces at runtime
+ * Type validation helpers
  */
 
 export function isEcocertId(value: unknown): value is EcocertId {
@@ -32,9 +31,8 @@ export function isEcocertId(value: unknown): value is EcocertId {
   }
   
   /**
-   * Schema validation using the interfaces
-   * Validates data structure matches expected format
-   */
+ * Schema validation using the interfaces
+ */
   export class TypeValidator {
     static validateEcocertAttestation(data: unknown): data is EcocertAttestation {
       return true;

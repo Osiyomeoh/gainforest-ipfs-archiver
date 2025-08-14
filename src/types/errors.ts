@@ -1,6 +1,5 @@
 /**
  * Application error categories
- * Used for error classification and handling
  */
 export enum ErrorCategory {
     CONFIGURATION = 'configuration',
@@ -77,9 +76,8 @@ export enum ErrorCategory {
   }
   
   /**
-   * Result type for operations that can fail
-   * Functional error handling approach
-   */
+ * Result type for operations that can fail
+ */
   export type Result<T, E = AppError> = 
     | { success: true; data: T }
     | { success: false; error: E };
@@ -90,9 +88,8 @@ export enum ErrorCategory {
   export type AsyncResult<T, E = AppError> = Promise<Result<T, E>>;
   
   /**
-   * Operation result with metrics
-   * Used for monitoring and reporting
-   */
+ * Operation result with metrics
+ */
   export interface OperationResult<T> {
     readonly data?: T;
     readonly success: boolean;

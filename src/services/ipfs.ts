@@ -23,7 +23,7 @@ export class PinataIPFSService {
 
   /**
    * Validate Pinata configuration
-   * Defense: Fails fast if configuration is invalid
+
    */
   private validateConfiguration(): void {
     if (!PINATA_CONFIG.apiKey && !PINATA_CONFIG.jwt) {
@@ -45,7 +45,7 @@ export class PinataIPFSService {
 
   /**
    * Initialize Pinata SDK
-   * Defense: Proper SDK initialization with error handling
+
    */
   private initializePinata(): void {
     try {
@@ -73,7 +73,7 @@ export class PinataIPFSService {
 
   /**
    * Test Pinata connection and authentication
-   * Defense: Validates service availability before operations
+
    */
   async healthCheck(): Promise<boolean> {
     try {
@@ -89,7 +89,7 @@ export class PinataIPFSService {
 
   /**
    * Upload content to IPFS via Pinata
-   * Defense: Comprehensive upload with validation and error handling
+
    */
   async upload(
     content: Buffer, 
@@ -176,7 +176,7 @@ export class PinataIPFSService {
 
   /**
    * Pin existing content by hash
-   * Defense: Ensures content persistence on Pinata
+
    */
   async pin(hash: string): Promise<void> {
     this.ensureInitialized();
@@ -210,7 +210,7 @@ export class PinataIPFSService {
 
   /**
    * Check pin status of content
-   * Defense: Monitors content persistence
+
    */
   async checkPinStatus(hash: string): Promise<IPFSPinStatus> {
     this.ensureInitialized();
@@ -245,7 +245,7 @@ export class PinataIPFSService {
 
   /**
    * Get detailed information about pinned content
-   * Defense: Provides metadata for monitoring and debugging
+
    */
   async getPinInfo(hash: string): Promise<any> {
     this.ensureInitialized();
@@ -278,7 +278,7 @@ export class PinataIPFSService {
 
   /**
    * Unpin content from Pinata
-   * Defense: Controlled content removal with logging
+
    */
   async unpin(hash: string): Promise<void> {
     this.ensureInitialized();
@@ -302,7 +302,7 @@ export class PinataIPFSService {
 
   /**
    * Get usage statistics from Pinata
-   * Defense: Monitors storage usage for cost management
+
    */
   async getUsageStats(): Promise<any> {
     this.ensureInitialized();
@@ -335,7 +335,7 @@ export class PinataIPFSService {
 
   /**
    * Validate content before upload
-   * Defense: Prevents uploading invalid or malicious content
+
    */
   private async validateContent(
     content: Buffer,
@@ -391,7 +391,7 @@ export class PinataIPFSService {
 
   /**
    * Generate SHA-256 hash of content
-   * Defense: Content verification and deduplication
+
    */
   private generateContentHash(content: Buffer): string {
     return createHash('sha256').update(content).digest('hex');
@@ -399,7 +399,7 @@ export class PinataIPFSService {
 
   /**
    * Ensure service is initialized
-   * Defense: Prevents operations on uninitialized service
+
    */
   private ensureInitialized(): void {
     if (!this.isInitialized) {
@@ -412,7 +412,7 @@ export class PinataIPFSService {
 
   /**
    * Batch upload multiple files
-   * Defense: Efficient bulk operations with progress tracking
+
    */
   async uploadBatch(
     files: Array<{ content: Buffer; filename: string; metadata?: Partial<ContentMetadata> }>

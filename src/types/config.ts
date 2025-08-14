@@ -4,7 +4,6 @@ export type Environment = 'development' | 'test' | 'staging' | 'production';
 
 /**
  * Database configuration
- * Matches Knex.js configuration format
  */
 export interface DatabaseConfig {
   readonly client: 'postgresql';
@@ -29,7 +28,7 @@ export interface DatabaseConfig {
 
 /**
  * Application configuration
- * Centralized configuration management
+ * Configuration management
  */
 export interface AppConfig {
   readonly environment: Environment;
@@ -43,7 +42,6 @@ export interface AppConfig {
 
 /**
  * Content processing configuration
- * Controls archiving behavior
  */
 export interface ProcessingConfig {
   readonly maxConcurrentDownloads: number;
@@ -57,7 +55,6 @@ export interface ProcessingConfig {
 
 /**
  * Logging configuration
- * Production logging setup
  */
 export interface LoggingConfig {
   readonly level: 'error' | 'warn' | 'info' | 'debug';
@@ -81,7 +78,6 @@ export interface MonitoringConfig {
 
 /**
  * Alerting configuration
- * Production alert thresholds
  */
 export interface AlertingConfig {
   readonly failureRateThreshold: number;
@@ -92,7 +88,7 @@ export interface AlertingConfig {
 
 /**
  * Runtime configuration validation
- * Ensures all required config is present
+ * Configuration validation
  */
 export interface ConfigValidationResult {
   readonly isValid: boolean;
@@ -102,7 +98,6 @@ export interface ConfigValidationResult {
 
 /**
  * Feature flags
- * Enable/disable features in different environments
  */
 export interface FeatureFlags {
   readonly enableRetryLogic: boolean;

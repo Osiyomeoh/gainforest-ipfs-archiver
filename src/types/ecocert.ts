@@ -10,9 +10,8 @@ export interface EcocertId {
   }
   
   /**
-   * Content source from attestation data
-   * Based on the sources field structure we analyzed
-   */
+ * Content source from attestation data
+ */
   export interface ContentSource {
     readonly type: 'url' | 'ipfs' | 'arweave'; 
     readonly src: string;                       
@@ -20,9 +19,8 @@ export interface EcocertId {
   }
   
   /**
-   * Attestation data structure from EAS
-   * Matches the GraphQL response format we analyzed
-   */
+ * Attestation data structure from EAS
+ */
   export interface AttestationData {
     readonly title: string;
     readonly description: string;
@@ -33,9 +31,8 @@ export interface EcocertId {
   }
   
   /**
-   * Complete EAS attestation record
-   * Maps to our attestations database table
-   */
+ * Complete EAS attestation record
+ */
   export interface EcocertAttestation {
     readonly uid: string;                   
     readonly schema_uid: string;             
@@ -45,9 +42,8 @@ export interface EcocertId {
   }
   
   /**
-   * Complete ecocert with all related data
-   * Used for processing and business logic
-   */
+ * Complete ecocert with all related data
+ */
   export interface FullEcocert {
     readonly id: string;
     readonly chainId: string;
@@ -71,9 +67,8 @@ export interface EcocertId {
     | 'retry';       
   
   /**
-   * Ecocert processing result
-   * Used for batch processing and reporting
-   */
+ * Ecocert processing result
+ */
   export interface EcocertProcessingResult {
     readonly ecocertId: string;
     readonly status: ProcessingStatus;

@@ -10,7 +10,7 @@ import { DatabaseError } from './types/errors';
 
 /**
  * Main application class
- * Defense: Centralized orchestration with proper lifecycle management
+
  */
 export class GainForestArchiver extends EventEmitter {
   private databaseService: DatabaseService;
@@ -37,7 +37,7 @@ export class GainForestArchiver extends EventEmitter {
 
   /**
    * Initialize all application services
-   * Defense: Validates all dependencies before starting operations
+
    */
   async initialize(): Promise<void> {
     if (this.isInitialized) {
@@ -69,8 +69,7 @@ export class GainForestArchiver extends EventEmitter {
   }
 
   /**
-   * Perform comprehensive health checks
-   * Defense: Ensures all services are operational before processing
+   * Perform health checks
    */
   async performHealthChecks(): Promise<{ [service: string]: boolean }> {
     const healthChecks = {
@@ -99,7 +98,7 @@ export class GainForestArchiver extends EventEmitter {
 
   /**
    * Process all sample ecocerts
-   * Defense: Main processing workflow with comprehensive monitoring
+
    */
   async processAllEcocerts(): Promise<{
     results: EcocertProcessingResult[];
@@ -144,7 +143,7 @@ export class GainForestArchiver extends EventEmitter {
 
   /**
    * Process specific ecocerts by ID
-   * Defense: Selective processing with validation
+
    */
   async processSpecificEcocerts(ecocertIds: string[]): Promise<{
     results: EcocertProcessingResult[];
@@ -213,7 +212,7 @@ export class GainForestArchiver extends EventEmitter {
 
   /**
    * Get archiving statistics
-   * Defense: Comprehensive reporting for monitoring
+
    */
   async getArchivingStatistics(): Promise<ArchivingStats & { 
     systemHealth: any;
@@ -245,7 +244,7 @@ export class GainForestArchiver extends EventEmitter {
 
   /**
    * Retry failed archives
-   * Defense: Recovery mechanism for failed operations
+
    */
   async retryFailedArchives(limit: number = 50): Promise<{
     attempted: number;
@@ -324,7 +323,7 @@ export class GainForestArchiver extends EventEmitter {
 
   /**
    * Retry individual archive record
-   * Defense: Isolated retry logic with proper error handling
+
    */
   private async retryArchiveRecord(archive: any): Promise<void> {
     await this.databaseService.updateArchiveStatus(archive.id, 'downloading');
@@ -373,7 +372,7 @@ export class GainForestArchiver extends EventEmitter {
 
   /**
    * Graceful shutdown
-   * Defense: Clean resource cleanup and ongoing operation completion
+
    */
   async shutdown(): Promise<void> {
     if (this.isShuttingDown) {
@@ -424,7 +423,7 @@ export class GainForestArchiver extends EventEmitter {
 
   /**
    * Generate processing summary
-   * Defense: Comprehensive metrics for monitoring and reporting
+
    */
   private generateProcessingSummary(
     results: EcocertProcessingResult[],
@@ -458,7 +457,7 @@ export class GainForestArchiver extends EventEmitter {
 
   /**
    * Setup process signal handlers
-   * Defense: Graceful shutdown on system signals
+
    */
   private setupSignalHandlers(): void {
     const signals: NodeJS.Signals[] = ['SIGTERM', 'SIGINT', 'SIGHUP'];
@@ -491,7 +490,7 @@ export class GainForestArchiver extends EventEmitter {
 
   /**
    * Ensure application is initialized
-   * Defense: Prevents operations on uninitialized application
+
    */
   private ensureInitialized(): void {
     if (!this.isInitialized) {
@@ -504,7 +503,7 @@ export class GainForestArchiver extends EventEmitter {
 
   /**
    * Ensure application is not shutting down
-   * Defense: Prevents new operations during shutdown
+
    */
   private ensureNotShuttingDown(): void {
     if (this.isShuttingDown) {
@@ -518,7 +517,7 @@ export class GainForestArchiver extends EventEmitter {
 
 /**
  * Processing summary interface
- * Defense: Structured reporting for monitoring
+
  */
 export interface ProcessingSummary {
   duration: number;

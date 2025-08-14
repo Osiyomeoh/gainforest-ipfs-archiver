@@ -1,6 +1,5 @@
 /**
  * IPFS upload result
- * Returned by IPFS service after successful upload
  */
 export interface IPFSUploadResult {
     readonly hash: string;
@@ -10,9 +9,8 @@ export interface IPFSUploadResult {
   }
   
   /**
-   * Content metadata before IPFS upload
-   * Gathered during download phase
-   */
+ * Content metadata before IPFS upload
+ */
   export interface ContentMetadata {
     readonly originalUrl: string;
     readonly contentType: string;
@@ -34,9 +32,8 @@ export interface IPFSUploadResult {
   }
   
   /**
-   * IPFS configuration
-   * Used by IPFS service for connection
-   */
+ * IPFS configuration
+ */
   export interface IPFSConfig {
     readonly endpoint: string;
     readonly gateway: string;
@@ -46,9 +43,8 @@ export interface IPFSUploadResult {
   }
   
   /**
-   * Content validation rules
-   * Used by validator service
-   */
+ * Content validation rules
+ */
   export interface ContentValidationRules {
     readonly maxFileSizeMB: number;
     readonly allowedMimeTypes: readonly string[];
@@ -70,9 +66,8 @@ export interface IPFSUploadResult {
   }
   
   /**
-   * IPFS pin status
-   * Used for content persistence monitoring
-   */
+ * IPFS pin status
+ */
   export interface IPFSPinStatus {
     readonly hash: string;
     readonly isPinned: boolean;
@@ -81,9 +76,8 @@ export interface IPFSUploadResult {
   }
   
   /**
-   * Content type classification
-   * Used for choosing appropriate processing strategy
-   */
+ * Content type classification
+ */
   export enum ContentTypeCategory {
     IMAGE = 'image',
     DOCUMENT = 'document',
@@ -104,9 +98,8 @@ export interface IPFSUploadResult {
   }
   
   /**
-   * Processed content result
-   * May include transformations or optimizations
-   */
+ * Processed content result
+ */
   export interface ProcessedContent {
     readonly content: Buffer;
     readonly metadata: ContentMetadata;

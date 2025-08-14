@@ -1,6 +1,6 @@
 /**
  * Pinata IPFS service configuration
- * Defense: Centralized configuration with environment overrides
+
  */
 export const PINATA_CONFIG = {
     apiKey: process.env.PINATA_API_KEY || '',

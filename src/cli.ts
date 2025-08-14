@@ -9,7 +9,7 @@ import { EcocertProcessingResult } from './types/ecocert';
 
 /**
  * CLI Application
- * Defense: User-friendly interface with comprehensive feedback
+
  */
 export class ArchiverCLI {
   private program: Command;
@@ -22,7 +22,7 @@ export class ArchiverCLI {
 
   /**
    * Setup CLI commands and options
-   * Defense: Clear command structure with validation
+
    */
   private setupCommands(): void {
     this.program
@@ -96,7 +96,7 @@ export class ArchiverCLI {
 
   /**
    * Run the CLI application
-   * Defense: Proper error handling and user feedback
+
    */
   async run(argv: string[] = process.argv): Promise<void> {
     try {
@@ -108,8 +108,7 @@ export class ArchiverCLI {
   }
 
   /**
-   * Handle command execution with common setup/teardown
-   * Defense: Consistent error handling and resource management
+   * Handle command execution
    */
   private async handleCommand(commandHandler: () => Promise<void>): Promise<void> {
     const spinner = ora('Initializing...').start();
@@ -149,7 +148,7 @@ export class ArchiverCLI {
 
   /**
    * Process all sample ecocerts command
-   * Defense: Clear progress indication and detailed results
+
    */
   private async processAllCommand(options: any): Promise<void> {
     if (options.dryRun) {
@@ -180,7 +179,7 @@ export class ArchiverCLI {
 
   /**
    * Process specific ecocerts command
-   * Defense: Input validation and clear feedback
+
    */
   private async processSpecificCommand(ecocertIds: string[], options: any): Promise<void> {
     if (options.dryRun) {
@@ -209,7 +208,7 @@ export class ArchiverCLI {
 
   /**
    * Display statistics command
-   * Defense: Comprehensive system status reporting
+
    */
   private async statsCommand(options: any): Promise<void> {
     const spinner = ora('Retrieving statistics...').start();
@@ -277,7 +276,7 @@ export class ArchiverCLI {
 
   /**
    * Retry failed archives command
-   * Defense: Recovery operations with clear progress
+
    */
   private async retryCommand(options: any): Promise<void> {
     const limit = parseInt(options.limit) || 50;
@@ -307,7 +306,7 @@ export class ArchiverCLI {
 
   /**
    * Health check command
-   * Defense: System validation and troubleshooting
+
    */
   private async healthCommand(options: any): Promise<void> {
     const spinner = ora('Performing health checks...').start();
@@ -348,7 +347,7 @@ export class ArchiverCLI {
 
   /**
    * Database migration command
-   * Defense: Safe database operations
+
    */
   private async dbMigrateCommand(): Promise<void> {
     const spinner = ora('Running database migrations...').start();
@@ -365,7 +364,7 @@ export class ArchiverCLI {
 
   /**
    * Database reset command
-   * Defense: Destructive operations require confirmation
+
    */
   private async dbResetCommand(options: any): Promise<void> {
     if (!options.confirm) {
@@ -396,8 +395,7 @@ export class ArchiverCLI {
  }
 
  /**
-  * Display processing results in a formatted table
-  * Defense: Clear, comprehensive result presentation
+  * Display processing results
   */
  private displayProcessingResults(
    results: EcocertProcessingResult[],

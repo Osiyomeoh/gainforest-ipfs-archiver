@@ -3,7 +3,7 @@ import { PINATA_CONFIG, CONTENT_VALIDATION } from './constants';
 
 /**
  * Load and validate application configuration
- * Defense: Centralized configuration with validation
+
  */
 export function loadConfig(): AppConfig {
   const environment = (process.env.NODE_ENV || 'development') as Environment;
@@ -62,7 +62,7 @@ export function loadConfig(): AppConfig {
 
 /**
  * Get database connection configuration
- * Defense: Environment-specific database settings
+
  */
 function getDatabaseConnection(environment: Environment) {
   if (environment === 'production' || environment === 'staging') {
@@ -89,7 +89,7 @@ function getDatabaseConnection(environment: Environment) {
 
 /**
  * Get database pool configuration
- * Defense: Environment-appropriate connection pooling
+
  */
 function getDatabasePool(environment: Environment) {
   const poolConfigs = {
@@ -112,7 +112,7 @@ function getDatabasePool(environment: Environment) {
 
 /**
  * Validate required environment variables
- * Defense: Fail fast if critical configuration is missing
+
  */
 function validateRequiredEnvVars(): void {
   const required = [
@@ -136,7 +136,7 @@ function validateRequiredEnvVars(): void {
 
 /**
  * Get configuration for specific service
- * Defense: Service-specific configuration access
+
  */
 export function getServiceConfig<K extends keyof AppConfig>(
   service: K,
