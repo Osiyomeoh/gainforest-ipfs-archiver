@@ -75,17 +75,11 @@ export enum ErrorCategory {
     }
   }
   
-  /**
- * Result type for operations that can fail
- */
   export type Result<T, E = AppError> = 
-    | { success: true; data: T }
-    | { success: false; error: E };
-  
-  /**
-   * Async result type
-   */
-  export type AsyncResult<T, E = AppError> = Promise<Result<T, E>>;
+  | { success: true; data: T }
+  | { success: false; error: E };
+
+export type AsyncResult<T, E = AppError> = Promise<Result<T, E>>;
   
   /**
  * Operation result with metrics

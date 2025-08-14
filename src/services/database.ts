@@ -25,8 +25,7 @@ export class DatabaseService {
   }
 
   /**
-   * Singleton pattern for connection management
-
+   * Connection management
    */
   public static getInstance(): DatabaseService {
     if (!DatabaseService.instance) {

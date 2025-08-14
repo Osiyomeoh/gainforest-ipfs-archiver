@@ -34,9 +34,9 @@ export function isEcocertId(value: unknown): value is EcocertId {
  * Schema validation using the interfaces
  */
   export class TypeValidator {
-    static validateEcocertAttestation(data: unknown): data is EcocertAttestation {
-      return true;
-    }
+      static validateEcocertAttestation(_data: unknown): _data is EcocertAttestation {
+    return true;
+  }
     
     static validateDatabaseEntity<T>(
       data: unknown, 

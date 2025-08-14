@@ -371,8 +371,7 @@ export class GainForestArchiver extends EventEmitter {
   }
 
   /**
-   * Graceful shutdown
-
+   * Shutdown
    */
   async shutdown(): Promise<void> {
     if (this.isShuttingDown) {
@@ -381,7 +380,7 @@ export class GainForestArchiver extends EventEmitter {
     }
 
     this.isShuttingDown = true;
-    logger.info('Starting graceful shutdown...');
+    logger.info('Starting shutdown...');
 
     try {
       this.emit('shutdown:started');
@@ -412,7 +411,7 @@ export class GainForestArchiver extends EventEmitter {
       await this.databaseService.destroy();
 
       this.emit('shutdown:completed');
-      logger.info('Graceful shutdown completed');
+      logger.info('Shutdown completed');
 
     } catch (error) {
       logger.error('Error during shutdown', { error });
@@ -464,12 +463,12 @@ export class GainForestArchiver extends EventEmitter {
 
     signals.forEach(signal => {
       process.on(signal, async () => {
-        logger.info(`Received ${signal}, initiating graceful shutdown`);
+        logger.info(`Received ${signal}, initiating shutdown`);
         try {
           await this.shutdown();
           process.exit(0);
         } catch (error) {
-          logger.error('Graceful shutdown failed', { error });
+          logger.error('Shutdown failed', { error });
           process.exit(1);
         }
       });
